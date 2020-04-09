@@ -78,6 +78,11 @@ class RBACData;
 
 namespace WorldPackets
 {
+    namespace Character
+    {
+        class ShowingCloak;
+        class ShowingHelm;
+    }
     namespace Chat
     {
         class EmoteClient;
@@ -136,6 +141,12 @@ namespace WorldPackets
         class OpeningCinematic;
         class WorldTeleport;
     }
+
+    namespace Pet
+    {
+        class DismissCritter;
+    }
+
     namespace Query
     {
         class QueryCreature;
@@ -411,7 +422,7 @@ class TC_GAME_API WorldSession
         }
 
         void LogoutPlayer(bool save);
-        void KickPlayer();
+        void KickPlayer(std::string const& reason);
         // Returns true if all contained hyperlinks are valid
         // May kick player on false depending on world config (handler should abort)
         bool ValidateHyperlinksAndMaybeKick(std::string const& str);
@@ -582,8 +593,8 @@ class TC_GAME_API WorldSession
         void HandleMountSpecialAnimOpcode(WorldPacket& recvdata);
 
         // character view
-        void HandleShowingHelmOpcode(WorldPacket& recvData);
-        void HandleShowingCloakOpcode(WorldPacket& recvData);
+        void HandleShowingHelmOpcode(WorldPackets::Character::ShowingHelm& packet);
+        void HandleShowingCloakOpcode(WorldPackets::Character::ShowingCloak& packet);
 
         // repair
         void HandleRepairItemOpcode(WorldPacket& recvPacket);
@@ -900,7 +911,7 @@ class TC_GAME_API WorldSession
         void HandleSetActionBarToggles(WorldPacket& recvData);
 
         void HandleTotemDestroyed(WorldPackets::Totem::TotemDestroyed& totemDestroyed);
-        void HandleDismissCritter(WorldPacket& recvData);
+        void HandleDismissCritter(WorldPackets::Pet::DismissCritter& dismissCritter);
 
         //Battleground
         void HandleBattlemasterHelloOpcode(WorldPacket& recvData);
