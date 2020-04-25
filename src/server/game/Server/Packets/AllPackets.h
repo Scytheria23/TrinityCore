@@ -20,6 +20,7 @@
 
 #include "CharacterPackets.h"
 #include "ChatPackets.h"
+#include "CombatLogPackets.h"
 #include "CombatPackets.h"
 #include "GuildPackets.h"
 #include "NPCPackets.h"
@@ -28,6 +29,7 @@
 #include "QueryPackets.h"
 #include "QuestPackets.h"
 #include "SpellPackets.h"
+#include "SystemPackets.h"
 #include "TotemPackets.h"
 #include "WorldStatePackets.h"
 
